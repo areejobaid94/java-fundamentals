@@ -19,7 +19,7 @@ public class Main {
         System.out.println(pluralize("Cat",1));
 
         // call flipNHeads with 3 as first arg
-        flipNHeads(3);
+        flipNHeads(4);
 
         //call First Solution clock.
         //clock();
@@ -31,7 +31,7 @@ public class Main {
     // The pluralize declaration.
     private static String pluralize(String word , int num){
         // print the word with s if num is 0 or more than  1 and without s it num is one
-        return ("I own ".concat(num+"").concat(" ").concat(num == 0 || num > 1 ? word + 's' : word));
+         return  "I own ".concat(num+"").concat(" ").concat(num == 0 || num > 1 ? word + 's' : word);
     }
 
     // The flipNHeads declaration.
@@ -46,6 +46,7 @@ public class Main {
         while (count < n){
             // print head or tails depend on the value of Math.random() * 1
             if(Math.random() * 1 < 0.5 ){
+                count = 0;
                 System.out.println("tails");
             }else {
                 count++;
@@ -62,7 +63,6 @@ public class Main {
     private static void clock () {
         //set the Timer;
         new Timer();
-
         // this method will work every 1 sec;
         javax.swing.Timer t = new javax.swing.Timer(1000, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
