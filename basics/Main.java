@@ -16,7 +16,7 @@ public class Main {
     //This method is running when the app run.
     public static void main(String[] args) {
         // call pluralize with cat as first arg and 0 as 2nd arg.
-        pluralize("Cat",0);
+        System.out.println(pluralize("Cat",1));
 
         // call flipNHeads with 3 as first arg
         flipNHeads(3);
@@ -29,9 +29,9 @@ public class Main {
     }
 
     // The pluralize declaration.
-    private static void pluralize(String word , int num){
+    private static String pluralize(String word , int num){
         // print the word with s if num is 0 or more than  1 and without s it num is one
-        System.out.println("I own ".concat(num+"").concat(" ").concat(num == 0 || num > 1 ? word + 's' : word));
+        return ("I own ".concat(num+"").concat(" ").concat(num == 0 || num > 1 ? word + 's' : word));
     }
 
     // The flipNHeads declaration.
