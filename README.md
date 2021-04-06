@@ -17,3 +17,14 @@ I spent 2 hours in this lab
 | Library.Test | testSomeLibraryMethod |
 
 I spent 4 hours in this lab
+
+### Class 3
+
+| The files  | The Methods | 
+|------------|-------------|
+| basiclibrary/Library.java | analyzingWeatherData,tally |
+| basiclibrary/Library.Test | analyzingWeatherData | tally|
+| linter/Library.java | analyzingWeatherData,tally |
+| linter/Library.Test | testAppHasAGreeting |
+
+I spent 4 hours in this lab

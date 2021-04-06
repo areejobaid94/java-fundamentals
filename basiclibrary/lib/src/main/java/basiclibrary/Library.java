@@ -3,28 +3,55 @@
  */
 package basiclibrary;
 import java.lang.Math;
-import java.lang.Math;
 import java.util.*; //Import for Arrays and Scanner
-import java.io.*; //Import for Scanner
-import java.util.Arrays;
 import java.util.Random;
 import java.util.HashMap; // import the HashMap class
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Library {
+    public static int[][] weeklyMonthTemperatures = {
+            {66, 64, 58, 65, 71, 57, 60},
+            {57, 65, 65, 70, 72, 65, 51},
+            {55, 54, 60, 53, 59, 57, 61},
+            {65, 56, 55, 52, 55, 62, 57}
+    };
+    public static List<String> votes = new ArrayList<>();
+
+    public Library(){
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Bush");
+        votes.add("Shrub");
+        votes.add("Hedge");
+        votes.add("Shrub");
+        votes.add("Bush");
+        votes.add("Hedge");
+        votes.add("Bush");
+    }
+
     public static void main(String[] args)
     {
-        System.out.println(Arrays.toString(roll(4)));
+//        System.out.println(Arrays.toString(roll(4)));
         // testing code by print results
         String[] arr = {"1","2","5"};
         int[] newArr = {1,2,5};
         long[] chalArr = {1,2,6,7};
         int[][] arrOfArrays = {{1,2,3},{4,5,6},{10,1,2}};
-        System.out.println(roll(5));
-        System.out.println(containsDuplicates(arr));
-        System.out.println(calculatingAverages(newArr));
-        System.out.println(Arrays.toString(minAvg(arrOfArrays)));
+
+        List<String> votes = new ArrayList<>();
+
+//        System.out.println(roll(5));
+//        System.out.println(containsDuplicates(arr));
+//        System.out.println(calculatingAverages(newArr));
+//        System.out.println(Arrays.toString(minAvg(arrOfArrays)));
+//        System.out.println(analyzingWeatherData(weeklyMonthTemperatures));
+        System.out.println(tally(votes).split(" ")[0]);
+
+//        System.out.println(analyzingWeatherData(weeklyMonthTemperatures).split("\n")[1]);
+
     }
 
     // roll method
@@ -142,4 +169,71 @@ public class Library {
         }
         return returnArr;
     };
+    public static String analyzingWeatherData(int[][] array){
+        if(array.length == 0 && array[0].length == 0){
+            System.out.println("High: " + 0);
+            System.out.println("Low: " + 0);
+            return "";
+        };
+        Integer max = array[0][0];
+        Integer min =array[0][0];
+        Set<Integer> uniqueTemperatures = new HashSet<Integer>();
+        for(int[] item: array ){
+            Map<String,Integer> maxMinArrayValue = maxAndMinArrayValue(item);
+            uniqueTemperatures.addAll(uniqueTemperatures(item));
+            if(maxMinArrayValue.get("Max") >  max){
+                max = maxMinArrayValue.get("Max");
+            }else if(maxMinArrayValue.get("Min") <  min){
+                min = maxMinArrayValue.get("Min");
+            }
+        };
+        System.out.println("High: " + max);
+        System.out.println("Low: " + min);
+        String temperatureNotSeen = "";
+        for (Integer i = min ; i <  max; i++){
+            if(uniqueTemperatures.contains(i) == false){
+                temperatureNotSeen += "Never saw temperature:" + i +"\n";
+            }
+        }
+        return temperatureNotSeen;
+    };
+
+    public static Map<String,Integer> maxAndMinArrayValue(int[] array){
+        Map<String,Integer>  minMax = new HashMap<String,Integer>();
+        minMax.put("Min", array[0]);
+        minMax.put("Max", array[0]);
+        for(int item : array){
+            if(minMax.get("Max") <  item){
+                minMax.put("Max", item);
+            }else if(minMax.get("Min") >  item){
+                minMax.put("Min", item);
+            }
+        };
+        return minMax;
+    }
+
+    public static Set<Integer> uniqueTemperatures(int[] array){
+        Set<Integer> uniqueTemperatures = new HashSet<Integer>();
+        for(int item : array){
+            uniqueTemperatures.add(item);
+        };
+        return uniqueTemperatures;
+    }
+
+    public static String tally(List<String> list){
+        if(list.size() == 0 )return "No Votes";
+        Map<String, Long> counts =
+                list.stream().collect(Collectors.groupingBy(e -> e, Collectors.counting()));
+        // System.out.println(counts);
+        Map.Entry<String, Long> maxEntry = null;
+        for (Map.Entry<String, Long> entry : counts.entrySet())
+        {
+            if (maxEntry == null || entry.getValue().compareTo(maxEntry.getValue()) > 0)
+            {
+                maxEntry = entry;
+            }
+        }
+        return maxEntry.getKey() + " received the most votes!";
+    }
+
 }
