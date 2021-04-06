@@ -17,3 +17,13 @@ I spent 2 hours in this lab
 | Library.Test | testSomeLibraryMethod |
 
 I spent 4 hours in this lab
+
+### Class 2
+
+| The files  | The Methods | 
+|------------|-------------|
+| basiclibrary/Library.java | |
+| Library.Test |  |
+
+
+I spent 4 hours in this lab

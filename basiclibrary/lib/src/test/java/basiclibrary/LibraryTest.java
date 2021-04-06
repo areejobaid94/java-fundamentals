@@ -4,6 +4,10 @@
 package basiclibrary;
 
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.*;
 import static org.junit.Assert.assertEquals;
 
@@ -55,5 +59,17 @@ public class LibraryTest {
         assertEquals(arrOfArrays[0],classUnderTest.minAvg(arrOfArrays));
         assertEquals(ArrayOfArrar2nd[2], classUnderTest.minAvg(ArrayOfArrar2nd));
     }
+    @Test public void analyzingWeatherData() {
+        Library classUnderTest = new Library();
+        assertEquals("Never saw temperature:63",classUnderTest.analyzingWeatherData(classUnderTest.weeklyMonthTemperatures).split("\n")[0]);
+        assertEquals("Never saw temperature:67",classUnderTest.analyzingWeatherData(classUnderTest.weeklyMonthTemperatures).split("\n")[1]);
+    }
+    @Test public void tally() {
+        Library classUnderTest = new Library();
+        List<String> VotesEmpty = new ArrayList<>();
+        System.out.println(classUnderTest.tally(classUnderTest.votes).split(" ")[0]);
+        assertEquals("Bush",classUnderTest.tally(classUnderTest.votes).split(" ")[0]);
+        assertEquals("No Votes",classUnderTest.tally(VotesEmpty));
+    }
 
-}
+    }
