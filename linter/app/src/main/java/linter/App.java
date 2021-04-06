@@ -10,33 +10,31 @@ import java.io.BufferedReader;
 import java.io.IOException;
 
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
-    }
-
     public static void main(String[] args) {
-        readFile();
+        System.out.println(readFile("gates.js"));
     }
 
-    public static void readFile (){
-        Path path = Paths.get("gates.js");
+    public static String readFile (String pathNew){
+        Path path = Paths.get(pathNew);
 
         BufferedReader reader = null;
-        // option 2
         try {
             reader = Files.newBufferedReader(path);
             String line = reader.readLine();
             int count = 0;
+            String outPut = "";
             while(line != null){
                 count++;
                 int length = line.length();
                 if(length != 0 &&  line.substring(length - 1).equals(";") == false && line.substring(length - 1).equals("}") == false && line.substring(length - 1).equals("{") == false && line.contains("if") == false && line.contains("else") == false) {
-                    System.out.println("Line" +count+": Missing emicolon.");
+                    outPut += "Line" +count+": Missing emicolon."+"\n";
                 }
                 line = reader.readLine();
             }
+            return outPut;
         } catch (IOException ex){
             ex.printStackTrace();
+            return "error";
         } finally {
             if(reader != null) {
                 try {
