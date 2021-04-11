@@ -28,3 +28,21 @@ I spent 4 hours in this lab
 | linter/Library.Test | testAppHasAGreeting |
 
 I spent 4 hours in this lab
+
+
+### Class 6
+
+### Overview Of The Architecture
+
+                         |── Chain.java                   
+                         ├── Restaurant.java                   
+├── main ├── Inheritance ├── Review.java 
+                         ├── Restaurant.java                      
+                         └── User.java                    
+
+├── test ├── Inheritance |── RestaurantTest.java                   
+                         └── ReviewTest.java     
+
+
+### You can run the test by: ./gradlew test 
+
