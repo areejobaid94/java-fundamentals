@@ -8,7 +8,7 @@ import java.util.Set;
 public class User {
     String author;
     Double authorAge;
-    ArrayList<Review> reviews;
+    ArrayList<Review> reviews = new ArrayList<Review>();
 
     public  User(String author, Double authorAge){
         this.author = author;
@@ -16,6 +16,11 @@ public class User {
     }
 
     public User(){
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter the author : ");
+        this.author = input.next();
+        System.out.println("Enter the author age : ");
+        this.authorAge = input.nextDouble();
     }
 
     public void addUserDataFromTheTiaminal(){
