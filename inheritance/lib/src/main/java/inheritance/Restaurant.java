@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Restaurant extends Review implements Chain{
     String name;
     Double priceCategory;
+    Review review ;
 
     public Restaurant(String name, int numberOfStars, Double priceCategory){
         this.name = name;
@@ -27,10 +28,11 @@ public class Restaurant extends Review implements Chain{
     }
 
     public void addReview(Review review){
-        if(review.body != this.body){
+        if(review.body != this.body || review.body != this.review.body){
             this.setAuthor(review.getAuthor());
             this.setNumberOfStars(review.getNumberOfStars());
             this.setBody(review.getBody());
+            this.review = review;
         }
     }
 
