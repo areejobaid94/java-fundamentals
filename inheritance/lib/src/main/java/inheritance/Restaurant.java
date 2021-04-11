@@ -2,9 +2,11 @@ package inheritance;
 
 import java.util.Scanner;
 
-public class Restaurant extends Review implements Chain{
+public class Restaurant implements Chain{
     String name;
     Double priceCategory;
+    int numberOfStars;
+    Review review;
 
     public Restaurant(String name, int numberOfStars, Double priceCategory){
         this.name = name;
@@ -18,20 +20,29 @@ public class Restaurant extends Review implements Chain{
     }
 
     public Restaurant(){
+    }
+
+    public void addRestaurantFromT(){
         Scanner input = new Scanner(System.in);
         System.out.println("Enter the name of the restaurant: ");
         this.name = input.next();
 
         System.out.println("Enter the price category of the restaurant: ");
         this.priceCategory = input.nextDouble();
+
+        while (numberOfStars  > 5 || numberOfStars < 0 ){
+            System.out.println("Number of stars should be between 0 and 5, enter new veiled number: ");
+            numberOfStars = input.nextInt();
+        }
     }
 
     public void addReview(Review review){
-        if(review.body != this.body){
-            this.setAuthor(review.getAuthor());
+        if(review.name != this.name){
             this.setNumberOfStars(review.getNumberOfStars());
-            this.setBody(review.getBody());
         }
+        review.setPriceCategory(this.getPriceCategory());
+        review.setName(this.getName());
+        this.review = review;
     }
 
     public String getName() {
@@ -57,14 +68,13 @@ public class Restaurant extends Review implements Chain{
     public void setPriceCategory(Double priceCategory) {
         this.priceCategory = priceCategory;
     }
+
     @Override
     public String toString() {
         return "Restaurant{" +
-                "name='" + name + '\'' +
+                "name='" + name +
                 ", numberOfStars=" + numberOfStars +
                 ", priceCategory=" + priceCategory +
-                ", author=" + author +
-                ", body=" + body +
                 '}';
     }
 }

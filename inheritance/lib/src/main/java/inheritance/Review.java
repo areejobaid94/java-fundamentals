@@ -2,8 +2,7 @@ package inheritance;
 
 import java.util.Scanner;
 
-public class Review extends User {
-
+public class Review extends Restaurant {
     String author;
     String body;
     int numberOfStars = -1;
@@ -20,9 +19,6 @@ public class Review extends User {
     }
 
     public Review(){
-    }
-
-    public void addRewiewFromT(){
         Scanner input = new Scanner(System.in);
         System.out.println("Enter the author : ");
         this.author = input.next();
@@ -34,6 +30,17 @@ public class Review extends User {
         }
     }
 
+//    public void addReviewFromT(){
+//        Scanner input = new Scanner(System.in);
+//        System.out.println("Enter the author : ");
+//        this.author = input.next();
+//        System.out.println("Enter the body : ");
+//        this.body = input.next();
+//        while (numberOfStars  > 5 || numberOfStars < 0 ){
+//            System.out.println("Number of stars should be between 0 and 5, enter new veiled number: ");
+//            numberOfStars = input.nextInt();
+//        }
+//    }
 
     public String getBody() {
         return body;
@@ -56,17 +63,12 @@ public class Review extends User {
         return "Review{" +
                 "body='" + body + '\'' +
                 ", numberOfStars=" + numberOfStars +
-                ", author='" + author + '\'' +
-                ", authorAge='" + authorAge + '\'' +
+                ", author='" + author +
+                ", name='" + name +
+                ", priceCategory=" + priceCategory +
                 '}';
     }
 
-    public void addAuthor(User user){
-        if(super.author != this.author){
-            this.setAuthor(user.getAuthor());
-            this.setAuthor(user.getAuthor());
-        }
-    }
     public int getNumberOfStars() {
         return numberOfStars;
     }
@@ -77,5 +79,6 @@ public class Review extends User {
 
     public void updateStars(int numberOfStars){
         this.setNumberOfStars(numberOfStars);
+        super.setNumberOfStars(numberOfStars);
     }
 }

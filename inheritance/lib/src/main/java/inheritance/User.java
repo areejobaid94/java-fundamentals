@@ -1,10 +1,14 @@
 package inheritance;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
+import java.util.Set;
 
 public class User {
     String author;
     Double authorAge;
+    ArrayList<Review> reviews;
 
     public  User(String author, Double authorAge){
         this.author = author;
@@ -23,6 +27,17 @@ public class User {
         this.authorAge = input.nextDouble();
     }
 
+    public String addReview(Review review){
+        for(Review rev : this.reviews){
+            if (rev.name == review.name){
+             return "you can't add new review for " +review.name;
+            }
+        }
+        this.reviews.add(review);
+        review.setAuthor(this.getAuthor());
+        return "The review has been added";
+    }
+
     public void setAuthorAge(Double authorAge) {
         this.authorAge = authorAge;
     }
@@ -39,4 +54,12 @@ public class User {
         this.author = author;
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "author='" + author + '\'' +
+                ", authorAge=" + authorAge +
+                ", reviews=" + reviews +
+                '}';
+    }
 }
