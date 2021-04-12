@@ -1,12 +1,10 @@
 package inheritance;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Restaurant implements Chain{
-    String name;
+public class Restaurant extends Place implements Chain{
     Double priceCategory;
-    int numberOfStars;
-    Review review;
 
     public Restaurant(String name, int numberOfStars, Double priceCategory){
         this.name = name;
@@ -36,31 +34,6 @@ public class Restaurant implements Chain{
         }
     }
 
-    public void addReview(Review review){
-        if(review.name != this.name){
-            this.setNumberOfStars(review.getNumberOfStars());
-        }
-        review.setPriceCategory(this.getPriceCategory());
-        review.setName(this.getName());
-        this.review = review;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getNumberOfStars() {
-        return numberOfStars;
-    }
-
-    public void setNumberOfStars(int numberOfStars) {
-        this.numberOfStars = numberOfStars;
-    }
-
     public Double getPriceCategory() {
         return priceCategory;
     }
@@ -72,9 +45,10 @@ public class Restaurant implements Chain{
     @Override
     public String toString() {
         return "Restaurant{" +
-                "name='" + name +
-                ", numberOfStars=" + numberOfStars +
-                ", priceCategory=" + priceCategory +
+                "Name='" + name +
+                ", Number Of Stars=" + numberOfStars +
+                ", Price Category=" + priceCategory +
+                ", All Reviews= "  + this.reviews +
                 '}';
     }
 }
