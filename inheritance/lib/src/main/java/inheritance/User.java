@@ -34,8 +34,8 @@ public class User {
 
     public String addReview(Review review){
         for(Review rev : this.reviews){
-            if (rev.name == review.name){
-             return "you can't add new review for " +review.name;
+            if (rev.place != null && review.place == review.place){
+             return "you can't add new review for " +review.place.name;
             }
         }
         this.reviews.add(review);
