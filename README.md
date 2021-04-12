@@ -34,13 +34,39 @@ I spent 4 hours in this lab
 
 ### Overview Of The Architecture
 
-                         |── Chain.java                   
+├── main ├── Inheritance |── Chain.java                   
                          ├── Restaurant.java                   
-├── main ├── Inheritance ├── Review.java 
+                         ├── Review.java 
                          ├── Restaurant.java                      
                          └── User.java                    
 
 ├── test ├── Inheritance |── RestaurantTest.java                   
+                         └── ReviewTest.java     
+
+
+### You can run the test by: ./gradlew test 
+
+
+
+### Class 7
+
+### Overview Of The Architecture
+
+├── main ├── Inheritance |── Chain.java                   
+                         ├── Restaurant.java  
+                         ├── MoveReview.java  
+                         ├── Shop.java  
+                         ├── Place.java                  
+                         ├── Review.java 
+                         ├── Restaurant.java   
+                         ├── Move.java 
+                         ├── Theater.java                                                         
+                         └── User.java                    
+
+├── test ├── Inheritance |── RestaurantTest.java
+                         ├── TheaterTest.java      
+                         ├── ShopTest.java   
+                         ├── UserTest.java                                                                                   
                          └── ReviewTest.java     
 
 
