@@ -3,18 +3,11 @@ package inheritance;
 import java.util.Scanner;
 
 public class Review {
-    String author;
-    String body;
-    int numberOfStars = -1;
-    Place place;
-
-    public Place getPlace() {
-        return place;
-    }
-
-    public void setPlace(Place place) {
-        this.place = place;
-    }
+    // The properties
+    protected String author;
+    protected String body;
+    protected int numberOfStars = -1;
+    protected Place place;
 
     public Review(String  body,String author,int numberOfStars){
         this.body = body;
@@ -27,6 +20,7 @@ public class Review {
         this.numberOfStars = numberOfStars;
     }
 
+    // The default constructor =>  if there is no arg => take the values from the terminal as input.
     public Review(){
         Scanner input = new Scanner(System.in);
         System.out.println("Enter the author : ");
@@ -39,6 +33,7 @@ public class Review {
         }
     }
 
+    // take the values from the terminal as input.
     public void addReviewFromT(){
         Scanner input = new Scanner(System.in);
         System.out.println("Enter the author : ");
@@ -51,53 +46,65 @@ public class Review {
         }
     }
 
-    public String getBody() {
-        return body;
+    // update num of Stars Method.
+    public void updateStars(int numberOfStars){
+        this.setNumberOfStars(numberOfStars);
+        if(place != null){
+            place.setNumberOfStars(numberOfStars);
+        }
     }
 
-    public void setBody(String body) {
-        this.body = body;
+    // all getters.
+    public Place getPlace() {
+        return place;
+    }
+
+    public String getBody() {
+        return body;
     }
 
     public String getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    @Override
-    public String toString() {
-        String output = "Review{" +
-                "Body='" + body + '\'' +
-                ", Number Of Stars=" + numberOfStars +
-                ", Author='" + author +
-                '}';
-
-        if(place != null){
-            output = "Review{" +
-                    "Body='" + body + '\'' +
-                    ", Number Of Stars=" + numberOfStars +
-                    ", Author='" + author +
-                    ", Place Name='" + place.name +
-                    '}';
-        }
-        return output;
-    }
-
     public int getNumberOfStars() {
         return numberOfStars;
+    }
+
+    // all setters.
+    public void setPlace(Place place) {
+        this.place = place;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     public void setNumberOfStars(int numberOfStars) {
         this.numberOfStars = numberOfStars;
     }
 
-    public void updateStars(int numberOfStars){
-        this.setNumberOfStars(numberOfStars);
+    // Override toString Method
+    @Override
+    public String toString() {
+        String output = "Review{" +
+                "Body='" +this.body + '\'' +
+                ", Number Of Stars=" +this.numberOfStars +
+                ", Author='" + this.author +
+                '}';
+
         if(place != null){
-            place.setNumberOfStars(numberOfStars);
+            output = "Review{" +
+                    "Body='" + this.body + '\'' +
+                    ", Number Of Stars=" + this.numberOfStars +
+                    ", Author='" + this.author +
+                    ", Place Name='" + this.place.getName() +
+                    '}';
         }
+        return output;
     }
 }

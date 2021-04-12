@@ -3,10 +3,8 @@ package inheritance;
 import java.util.Scanner;
 
 public class MovieReview extends Review {
-    String movie;
-    public void MovieReview(){
-
-    }
+    // The properties
+    private String movie;
 
     public MovieReview(String  body,String author,int numberOfStars, String movie){
         super(body,author,numberOfStars);
@@ -19,21 +17,14 @@ public class MovieReview extends Review {
         this.numberOfStars = numberOfStars;
     }
 
-    public String getMovie() {
-        return movie;
-    }
-
-    public void setMovie(String movie) {
-        this.movie = movie;
-    }
-
+    // The default constructor =>  if there is no arg => take the values from the terminal as input.
     public MovieReview(){
         Scanner input = new Scanner(System.in);
         System.out.println("Enter the author : ");
         this.author = input.next();
         System.out.println("Enter the body : ");
         this.body = input.next();
-        System.out.println("Enter the movie : ");
+        System.out.println("Enter the movie name: ");
         this.movie = input.next();
         while (numberOfStars  > 5 || numberOfStars < 0 ){
             System.out.println("Number of stars should be between 0 and 5, enter new veiled number: ");
@@ -41,6 +32,19 @@ public class MovieReview extends Review {
         }
     }
 
+    // all getters.
+    public String getMovie() {
+        return movie;
+    }
+
+    // all setters.
+    public void setMovie(String movie) {
+        this.movie = movie;
+    }
+
+
+
+    // Override toString Method
     @Override
     public String toString() {
         String output = "MovieReview{" +
@@ -56,7 +60,7 @@ public class MovieReview extends Review {
                     ", Body='" + body +
                     ", Number Of Stars=" + numberOfStars +
                     ", Author='" + author +
-                    ", Place Name='" + place.name +
+                    ", Place Name='" + place.getName() +
                     '}';
         }
         return output;
